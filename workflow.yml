@@ -1,32 +1,49 @@
-name: workflow-docker
+name: docker-build-push
 
+#on: [push]
 on:
+  schedule:
+    # this is UTC time - so really 10:20 AM https://jasonet.co/posts/scheduled-actions/
+    - cron: '20 14 * * *'
   push:
     branches: [master]
+    tags:
+      - 'v*.*.*'
+
+env:
+  DOCKER_REPO: cicd-3120-LaceyDelaney
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  docker-build-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
+      - name: checking out repo
         uses: actions/checkout@v3
-      
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Extract metadata (tags, labels) for Docker
+      - run: echo "post-checkout" && ls -lah && pwd
+      - name: Docker meta
         id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        uses: docker/metadata-action@v3
         with:
-          images: my-docker-hub-namespace/my-docker-hub-repository
-      
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+          # list of Docker images to use as base name for tags
+          images: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}
+          # generate Docker tags based on the following events/attributes
+          flavor: |
+            latest=auto
+          tags: |
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+      - name: login to dockerhub
+        uses: docker/login-action@v1
+        with: 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: docker buildx
+        uses: docker/setup-buildx-action@v1
+      - name: build and push
+        uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: laceydelaney/project5:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          #tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:latest,${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:2.0
+          #labels: ${{ steps.meta.outputs.labels }}
