@@ -28,30 +28,26 @@ https://docs.docker.com/engine/install/ubuntu/
 
 ## Part 2 - GitHub Actions and DockerHub
 
-- **Milestone Participation due 4/8**
-
-### Tasks
-
-- Create DockerHub account: https://hub.docker.com/ (select Free tier if prompted)
-- Create Public Repository in DockerHub
-
-![Screenshot from 2022-04-20 10-31-07](https://user-images.githubusercontent.com/77417309/164342779-2f772f48-b42f-4bf9-8152-37bcdc61fa6b.png)
-
-- Set GitHub Secrets named DOCKER_USERNAME and DOCKER_PASSWORD with your respective information filled out.
-  - 
 - Set up GitHub Actions workflow to build and push docker image to DockerHub
   - Use workflow templated here: https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub
 
 ### Documentation
 
-- Update `README.md` in main folder of your repo to include:
-
 - Create DockerHub public repo
-  - process to create
+  - Create an account on DockerHub 
+  - Select Create Repository and name it. 
+  - Make sure to select public repo 
+
+  ![Screenshot from 2022-04-20 10-31-07](https://user-images.githubusercontent.com/77417309/164344871-a1f20320-07e7-434e-b543-e7cd322287ab.png)
+
 - Allow DockerHub authentication via CLI using Dockhub credentials
+  - Go to the account settings and security. 
+  - Create a new access token and allow read, write, and delete. 
+  - took a screenshot of contents for later. 
 - Configure GitHub Secrets
-  - what credentials are needed - DockerHub credentials (do not state your credentials)
-  - set secrets and secret names
+  - Go to repo settings. 
+  - Enviroments (create Docker enviroment) 
+  - Create secrets named DOCKER_USERNAME & DOCKER_PASSWORD with my credentials 
 - Configure GitHub Workflow
   - variables to change (repository, etc.)
 
