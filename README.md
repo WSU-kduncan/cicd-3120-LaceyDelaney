@@ -34,7 +34,11 @@ https://docs.docker.com/engine/install/ubuntu/
 
 - Create DockerHub account: https://hub.docker.com/ (select Free tier if prompted)
 - Create Public Repository in DockerHub
+
+![Screenshot from 2022-04-20 10-31-07](https://user-images.githubusercontent.com/77417309/164342779-2f772f48-b42f-4bf9-8152-37bcdc61fa6b.png)
+
 - Set GitHub Secrets named DOCKER_USERNAME and DOCKER_PASSWORD with your respective information filled out.
+  - 
 - Set up GitHub Actions workflow to build and push docker image to DockerHub
   - Use workflow templated here: https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub
 
