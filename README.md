@@ -49,11 +49,8 @@ https://docs.docker.com/engine/install/ubuntu/
   - Enviroments (create Docker enviroment) 
   - Create secrets named DOCKER_USERNAME & DOCKER_PASSWORD with my credentials 
 - Configure GitHub Workflow
-  - variables to change (repository, etc.)
 
-### Resources
-
-- [GitHub Actions - Docker Docs](https://docs.docker.com/ci-cd/github-actions/)
+  ![Screenshot from 2022-04-21 17-14-11](https://user-images.githubusercontent.com/77417309/164561663-9c9f3322-b74f-4573-8ba2-3d39e920b456.png)
 
 ## Part 3 - Deployment
 
