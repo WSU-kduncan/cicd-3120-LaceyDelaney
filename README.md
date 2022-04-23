@@ -65,12 +65,36 @@ https://docs.docker.com/engine/install/ubuntu/
 ### Documentation
 
 - Update `README.md` in main folder of your repo to include:
-- Creating a webhook
+
+- Container restart script
+  - what it does
+- Webhook task definition file
+  - what it does
+- Setting up a webhook on the server
+  - How you created you own listener
+  - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
+- Setting up a notifier in GitHub or DockerHub
 
 ### Resources
 
-- [using github actions and webhooks](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
-- [Link needed - webhooks with DockerHub]
+Note: the challenging part here is getting the webhook reciever running and happy on the server. You can lean on lectures and notes left in the PowerPoint slides, but make sure you add your own notes to your documentation
+
+- [Using GitHub actions and webhooks](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
+- [Using DockerHub and webhooks](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
+  - Note: this has been the method focused on in lecture
+
+## Part 4 - Diagramming
+
+Include a diagram (or diagrams) of your entire workflow. Meaning it should start with a project change / update, the steps that happen in between, and end with the updated version when the server is queried (web page is accessed)
+
+### Resources
+
+You can use whatever tools you would like, here are some recommend tools that people use
+
+- [Lucid Charts](https://www.lucidchart.com/pages/)
+- [Textographo](https://textografo.com/)
+- [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+- PowerPoint and OneNote are still good choices
 
 ## Submission
 
@@ -82,6 +106,9 @@ https://docs.docker.com/engine/install/ubuntu/
    - `website` folder with website pages
    - `Dockerfile`
    - GitHub action yml file
+   - webhook related config files
+     - container restart script
+     - webhook definition file
 
 2. In Pilot, paste the link to your project folder.
 
